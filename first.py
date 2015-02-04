@@ -1,20 +1,26 @@
 import RPi.GPIO as GPIO
 import time
 
-led_pin = 17
-
 GPIO.setmode(GPIO.BCM)
 
-GPIO.setup(led_pin, GPIO.OUT)
-
 count = 0
-light_time = .2
+light_time = .1
 flashes = 20
 
+green_pin = 17
+red_pin = 27
+
+GPIO.setup(green_pin, GPIO.OUT)
+GPIO.setup(red_pin, GPIO.OUT)
+
 while count < flashes:
-  GPIO.output(led_pin, 1)
+  GPIO.output(green_pin, 1)
   time.sleep(light_time)
-  GPIO.output(led_pin, 0)
+  GPIO.output(red_pin, 1)
+  time.sleep(light_time)
+  GPIO.output(green_pin, 0)
+  time.sleep(light_time)
+  GPIO.output(red_pin, 0)
   time.sleep(light_time)
   count += 1
 
