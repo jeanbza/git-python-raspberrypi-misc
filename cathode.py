@@ -17,8 +17,10 @@ def lightup(pin, uptime):
     GPIO.output(pin, 0)
     time.sleep(uptime)
 
-lightup(blue_pin, .2)
-lightup(green_pin, .2)
-lightup(red_pin, .2)
-
+try:
+    lightup(blue_pin, .2)
+    lightup(green_pin, .2)
+    lightup(red_pin, .2)
+except:
+    print "Unexpected error: ", sys.exc_info()[0]
 GPIO.cleanup()
