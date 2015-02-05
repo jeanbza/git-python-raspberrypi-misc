@@ -2,6 +2,12 @@ import RPi.GPIO as GPIO
 import time
 import sys
 
+if len(sys.argv) < 2:
+    print "1 argument required: # cycles"
+    sys.exit(1)
+
+cycles = int(float(sys.argv[1]))
+
 GPIO.setmode(GPIO.BCM)
 
 blue_pin = 5
@@ -11,7 +17,6 @@ red_pin = 13
 uptime = .05
 
 pins = [blue_pin, green_pin, red_pin]
-lit_pins = []
 
 for pin in pins:
     GPIO.setup(pin, GPIO.OUT)
@@ -45,13 +50,16 @@ def lightup(pins, uptime):
         time.sleep(uptime)
 
 try:
-    # Algorithms...how do they even work
-    for pin1 in pins:
-        lightup([pin1], uptime)
-        for pin2 in pins:
-            lightup([pin1, pin2], uptime)
-            for pin3 in pins:
-                lightup([pin1, pin2, pin3], uptime)
+    for x in range(cycles):
+        lit_pins = []
+
+        # Algorithms...how do they even work
+        for pin1 in pins:
+            lightup([pin1], uptime)
+            for pin2 in pins:
+                lightup([pin1, pin2], uptime)
+                for pin3 in pins:
+                    lightup([pin1, pin2, pin3], uptime)
         
 except:
     print sys.exc_info()
