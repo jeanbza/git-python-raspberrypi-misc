@@ -8,23 +8,41 @@ blue_pin = 5
 green_pin = 6
 red_pin = 13
 
-uptime = .2
+uptime = .05
 
 pins = [blue_pin, green_pin, red_pin]
+lit_pins = []
 
 for pin in pins:
     GPIO.setup(pin, GPIO.OUT)
 
+def unique_arr_sum(arr):
+    sum = 0
+    previous_items = [] # To avoid things like [15, 15] being counted
+                        # differently than [15]
+
+    for i in arr:
+        if i not in previous_items:
+            previous_items.append(i)
+            sum += i
+
+    return sum
+
 def lightup(pins, uptime):
-    for pin in pins:
-        GPIO.output(pin, 1)
+    if unique_arr_sum(pins) not in lit_pins:
+        print "Outputting: ", pins, " whose unique id is ", unique_arr_sum(pins)
+
+        lit_pins.append(unique_arr_sum(pins))
+
+        for pin in pins:
+            GPIO.output(pin, 1)
     
-    time.sleep(uptime)
+        time.sleep(uptime)
     
-    for pin in pins:
-        GPIO.output(pin, 0)
+        for pin in pins:
+            GPIO.output(pin, 0)
     
-    time.sleep(uptime)
+        time.sleep(uptime)
 
 try:
     # Algorithms...how do they even work
