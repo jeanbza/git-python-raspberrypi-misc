@@ -1,16 +1,27 @@
 class Common:
     def permutations(self, arr):
-        return self.permutations_foo(arr, 0)
+        return self.permutations_foo(arr, 0, 3)
 
-    def permutations_foo(self, arr, start):
+    def permutations_foo(self, arr, start, dist):
         permutations = []
 
-        permutations.append(arr[start:])
+        print "i j d l res"
 
-        for i in arr[start:len(arr)-1]:
-            permutations.append(arr[i:])
+        for i in range(len(arr)):
+            for j in range(len(arr)-i-dist+1):
+                j += i+dist-1
 
-            if len(arr[i:]) > 1:
-                permutations.append(self.permutations_foo(arr[i-1:], start+1))
+                res = arr[i:i+dist-1]+[arr[j]]
+
+                print i, j, dist, len(arr), res
+
+                if i+dist <= len(arr):
+                    permutations.append(res)
+
+        # if (start < len(arr)):
+        #     permutations.append(self.permutations_foo(arr, start+1, dist))
+
+        # if (dist < len(arr)):
+        #     permutations += self.permutations_foo(arr, start, dist+1)
 
         return permutations
