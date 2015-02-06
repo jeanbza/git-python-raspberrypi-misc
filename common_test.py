@@ -6,18 +6,18 @@ class TestCommonFunctions(unittest.TestCase):
         self.common = Common()
 
     def test_permutations(self):
-        # input = [1, 2]
+        input = [1, 2]
 
 
-        # output = self.common.permutations(input)
+        output = self.common.permutations(input)
 
 
-        # print "Sent in ", input, " got out ", output 
+        print "Sent in ", input, " got out ", output 
 
-        # self.assertEqual(len(output), 3)
-        # self.assertIn([1], output)
-        # self.assertIn([2], output)
-        # self.assertIn([1, 2], output)
+        self.assertEqual(len(output), 3)
+        self.assertIn([1], output)
+        self.assertIn([2], output)
+        self.assertIn([1, 2], output)
 
         # -----
 
@@ -27,7 +27,7 @@ class TestCommonFunctions(unittest.TestCase):
         output = self.common.permutations(input)
 
 
-        # print "Sent in ", input, " got out ", "\n"+"\n".join(str(x) for x in output)
+        print "Sent in ", input, " got out ", "\n"+"\n".join(str(x) for x in output)
 
         # C(5,1)
         self.assertIn([3], output)

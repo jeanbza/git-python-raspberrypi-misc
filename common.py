@@ -9,12 +9,19 @@ class Common:
             if dist == 1:
                 permutations += [prefix+[arr[i]]]
             else:
-                permutations += self.permutations_foo(arr, prefix+[arr[i]], i+1, dist-1)
+                permutations = self.merge_uniques(permutations, self.permutations_foo(arr, prefix+[arr[i]], i+1, dist-1))
 
         if dist == len(arr):
             return permutations
         else:
-            return permutations + self.permutations_foo(arr, prefix, start, dist+1)
+            return self.merge_uniques(permutations, self.permutations_foo(arr, prefix, start, dist+1))
+
+    def merge_uniques(self, arr1, arr2):
+        for x in arr2:
+            if x not in arr1:
+                arr1 += [x]
+
+        return arr1
 
 # When start = 0, dist = 1, prefix = []
     # Iterate from 0->5 and add the array item to your list of permutations
