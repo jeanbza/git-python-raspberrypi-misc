@@ -16,6 +16,7 @@ class Common:
         else:
             return self.merge_uniques(permutations, self.permutations_foo(arr, prefix, start, dist+1))
 
+    # Boooo. More time complexity. Oh well
     def merge_uniques(self, arr1, arr2):
         for x in arr2:
             if x not in arr1:
