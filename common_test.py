@@ -27,7 +27,7 @@ class TestCommonFunctions(unittest.TestCase):
         output = self.common.permutations(input)
 
 
-        print "Sent in ", input, " got out ", "\n"+"\n".join(str(x) for x in output)
+        # print "Sent in ", input, " got out ", "\n"+"\n".join(str(x) for x in output)
 
         # C(5,1)
         self.assertIn([3], output)
