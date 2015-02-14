@@ -25,10 +25,10 @@ while True:
     io.output(red_pin, 0)
 
     if io.input(pir_pin):
-        requests.post("http://pipingpong.cfapps.io/activity", data={'active': 1})
+        requests.post("http://pipingpong.cfapps.io/activity", data='{"active": true}')
         io.output(green_pin, 1)
     else:
-        requests.post("http://pipingpong.cfapps.io/activity", data={'active': 0})
+        requests.post("http://pipingpong.cfapps.io/activity", data='{"active": false}')
         io.output(red_pin, 1)
 
     time.sleep(0.5)

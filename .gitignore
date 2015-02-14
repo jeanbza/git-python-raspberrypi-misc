@@ -1,3 +1,5 @@
 .AppleDouble*
+*.err
+*.log
 .DS_Store
 *.pyc
