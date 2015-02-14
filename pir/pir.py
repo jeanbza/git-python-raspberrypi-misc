@@ -25,11 +25,9 @@ while True:
     io.output(red_pin, 0)
 
     if io.input(pir_pin):
-        print("PIR ALARM")
         requests.post("http://pipingpong.cfapps.io/activity", data={'active': 1})
         io.output(green_pin, 1)
     else:
-        print("NADA")
         requests.post("http://pipingpong.cfapps.io/activity", data={'active': 0})
         io.output(red_pin, 1)
 
