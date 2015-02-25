@@ -3,4 +3,5 @@
 
 ### Installation
 
-1. pip install -r requirements.txt
+1. `sudo apt-get install pip`
+1. `pip install -r requirements.txt`
