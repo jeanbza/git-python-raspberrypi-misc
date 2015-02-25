@@ -3,5 +3,5 @@
 
 ### Installation
 
-1. `sudo apt-get install pip`
+1. [Install pip](https://pip.pypa.io/en/latest/installing.html)
 1. `pip install -r requirements.txt`
